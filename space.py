@@ -52,6 +52,7 @@ class Space:
 s = Space(15, 10)
 p = Player(15 // 2, 10 // 2)
 
+
 while True:
     s.print_map(p)
     dir = input('>> ')
@@ -60,5 +61,11 @@ while True:
         p.y -= 1
     elif dir == 's':
         p.y += 1
+    elif dir == 'e':
+        p.x -= 1
+    elif dir == 'w':
+        p.x += 1
+    elif dir == 'end':
+        break
 
 # print(s)
