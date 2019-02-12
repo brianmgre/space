@@ -49,28 +49,30 @@ class Space:
 s = Space(15, 10)
 p = Player(15 // 2, 10 // 2)
 
+star = 'you hit a star'
+
 while True:
     s.print_map(p)
     dir = input('>> ')
     if dir == 'n':
         p.y -= 1
         if s.crash(p):
-            print('you hit a star')
+            print(f'{star}')
             break
     elif dir == 's':
         p.y += 1
         if s.crash(p):
-            print('you hit a star')
+            print(f'{star}')
             break
     elif dir == 'e':
         p.x += 1
         if s.crash(p):
-            print('you hit a star')
+            print(f'{star}')
             break
     elif dir == 'w':
         p.x -= 1
         if s.crash(p):
-            print('you hit a star')
+            print(f'{star}')
             break
     elif dir == 'end':
         break
