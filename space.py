@@ -17,13 +17,12 @@ class Space:
             row = ['.'] * width
             self.space.append(row)
 
+        # todo: add random stars
         for i in range(10):
             rowNum = random.randint(0, height - 1)
             colNum = random.randint(0, width - 1)
 
             self.space[rowNum][colNum] = '*'
-
-        # todo: add random stars
 
         # todo: methods
 
@@ -40,31 +39,39 @@ class Space:
                 print(f'{char} ', end='')
             print()
 
-    def __str__(self):
-        s = ''
-
-        for row in self.space:
-            s += ''.join(row) + '\n'
-
-        return s
+    def crash(self, player):
+        if self.space[player.y][player.x] == '*':
+            return True
+        else:
+            return False
 
 
 s = Space(15, 10)
 p = Player(15 // 2, 10 // 2)
 
-
 while True:
     s.print_map(p)
     dir = input('>> ')
-
     if dir == 'n':
         p.y -= 1
+        if s.crash(p):
+            print('you hit a star')
+            break
     elif dir == 's':
         p.y += 1
+        if s.crash(p):
+            print('you hit a star')
+            break
     elif dir == 'e':
-        p.x -= 1
-    elif dir == 'w':
         p.x += 1
+        if s.crash(p):
+            print('you hit a star')
+            break
+    elif dir == 'w':
+        p.x -= 1
+        if s.crash(p):
+            print('you hit a star')
+            break
     elif dir == 'end':
         break
 
