@@ -54,26 +54,46 @@ star = 'you hit a star'
 while True:
     s.print_map(p)
     dir = input('>> ')
+
     if dir == 'n':
-        p.y -= 1
-        if s.crash(p):
-            print(f'{star}')
-            break
+        if p.y > 0:
+            p.y -= 1
+            if s.crash(p):
+                print(f'{star}')
+                break
+        else:
+            p.y = p.y
+
     elif dir == 's':
-        p.y += 1
+        if p.y < 9:
+            p.y += 1
+            if s.crash(p):
+                print(f'{star}')
+                break
+        else:
+            p.y = p.y
         if s.crash(p):
             print(f'{star}')
             break
+
     elif dir == 'e':
-        p.x += 1
-        if s.crash(p):
-            print(f'{star}')
-            break
+        if p.x < 14:
+            p.x += 1
+            if s.crash(p):
+                print(f'{star}')
+                break
+        else:
+            p.x = p.x
+
     elif dir == 'w':
-        p.x -= 1
-        if s.crash(p):
-            print(f'{star}')
-            break
+        if p.x > 0:
+            p.x -= 1
+            if s.crash(p):
+                print(f'{star}')
+                break
+        else:
+            p.x = p.x
+
     elif dir == 'end':
         break
 
